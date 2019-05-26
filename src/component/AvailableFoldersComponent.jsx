@@ -1,6 +1,27 @@
 import React, { Component } from 'react';
+import AvailableFoldersService from '../service/AvailableFoldersService';
 
 class AvailableFoldersComponent extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            folders: []
+        }
+        this.refreshFolders = this.refreshFolders.bind(this)
+    }
+
+    componentDidMount() {
+        this.refreshFolders();
+    }
+
+    refreshFolders() {
+        AvailableFoldersService.retrieveAllFolders().then(response => {
+            console.log(response);
+            this.setState({ folders: response.data })
+        })
+    }
+
     render() {
         return (
             <div className="main-container">
@@ -14,10 +35,15 @@ class AvailableFoldersComponent extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            {
+                                this.state.folders.map(
+                                    folder =>
+                                        <tr key={folder.id}>
+                                            <td>{folder.id}</td>
+                                            <td>{folder.path}</td>
+                                        </tr>
+                                )
+                            }
                         </tbody>
                     </table>
                 </div>
