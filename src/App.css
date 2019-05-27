@@ -6,6 +6,6 @@ table, th, td {
   border: 1px solid black;
 }
 
-.folder-table {
+.folder-table, .folder-content-table {
   margin: 0 auto;
 }
