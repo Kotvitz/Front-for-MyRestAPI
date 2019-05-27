@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import FolderApp from './component/FolderApp';
 
 function App() {
   return (
     <div className="container">
-      <FolderApp />
+      <BrowserRouter>
+        <FolderApp />
+      </BrowserRouter>
     </div>
   );
 }

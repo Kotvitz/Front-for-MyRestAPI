@@ -1,11 +1,14 @@
 import axios from 'axios'
-
-const API_URL = 'http://localhost:8080'
+import * as appconst from '../AppConstant'
 
 class AvailableFoldersService {
 
     retrieveAllFolders() {
-        return axios.get(`${API_URL}`);
+        return axios.get(`${appconst.API_URL}`);
+    }
+
+    retrieveFolderContent(id) {
+        return axios.get(`${appconst.API_URL}/${id}`);
     }
 }
 
